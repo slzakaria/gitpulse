@@ -33,6 +33,6 @@ func main() {
 	handler := c.Handler(router)
 
 	port := PORT
-	log.Printf("Server is running on port :%s ...\nFetching github issues opened in the last 3 months", port)
+	log.Printf("Server is running on port %s ...\nFetching github issues opened in the last 3 months", port)
 	log.Fatal(http.ListenAndServe(port, handler))
 }
