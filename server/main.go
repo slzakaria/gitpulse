@@ -6,11 +6,15 @@ import (
 	"net/http"
 	"os"
 
+	"fmt"
+
 	"github.com/joho/godotenv"
 	"github.com/rs/cors"
 )
 
 func main() {
+	fmt.Println("Started the go server successfully")
+
 	// Load environment variables from .env file
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
