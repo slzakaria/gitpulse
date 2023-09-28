@@ -30,7 +30,6 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 		log.Fatal("Error loading .env file")
 	}
 
-	// Access the API key
 	apiKey := os.Getenv("GITHUB_API_KEY")
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
@@ -43,22 +42,22 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 		return nil, err
 	}
 
-	// Set your GitHub API token
+	// Set GitHub API token
 	req.Header.Set("Authorization", "Bearer "+apiKey)
 
 	client := http.Client{}
-	resp, err := client.Do(req)
+	response, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer response.Body.Close()
 
 	var result struct {
 		Items []map[string]interface{} `json:"items"`
 	}
 
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, err
+	if error := json.NewDecoder(response.Body).Decode(&result); error != nil {
+		return nil, error
 	}
 
 	// Parse and format the "pushed_at" field to get the yyyy-mm-dd format

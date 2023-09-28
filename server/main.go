@@ -2,11 +2,10 @@ package main
 
 import (
 	"codetrackr/api"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
-
-	"fmt"
 
 	"github.com/joho/godotenv"
 	"github.com/rs/cors"
@@ -15,24 +14,22 @@ import (
 func main() {
 	fmt.Println("Started the go server successfully")
 
-	// Load environment variables from .env file
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	// Access the API key
 	PORT := os.Getenv("PORT")
+
 	// Set up API routes
 	router := api.SetupRoutes()
 
-	// Create a new CORS middleware instance
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost:5173"}, // Replace with your frontend URL
+		AllowedOrigins: []string{"http://localhost:5173"},
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders: []string{"*"},
 	})
 
-	// Use the CORS middleware with your router
+	// Use the CORS middleware 
 	handler := c.Handler(router)
 
 	port := PORT
