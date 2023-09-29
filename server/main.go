@@ -6,15 +6,16 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/joho/godotenv"
 	"github.com/rs/cors"
 )
 
 func main() {
 	fmt.Println("Started the go server successfully")
 
-	// if err := godotenv.Load(); err != nil {
-	// 	log.Fatalf("Error loading .env file: %v", err)
-	// }
+	if err := godotenv.Load(); err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
 
 	// PORT := os.Getenv("PORT")
 
@@ -31,8 +32,7 @@ func main() {
 	handler := c.Handler(router)
 
 	port := ":3000"
-	fmt.Println("Port is :", port)
 
-	log.Printf("Server is running on port %s ...\nFetching github issues opened in the last 3 months", port)
+	log.Printf("Server is running on port %s ...\nFetching github issues opened in the last 6 months", port)
 	log.Fatal(http.ListenAndServe(port, handler))
 }
