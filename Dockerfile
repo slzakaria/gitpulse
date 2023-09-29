@@ -7,6 +7,9 @@ WORKDIR /app/server
 # Copy the Go application source code and dependencies
 COPY ./server/ .
 
+# Copy the .env file from the project root to the container's working directory
+COPY .env /app/server/.env
+
 # Build the Go application
 RUN go build -o main
 
