@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -30,7 +29,7 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 		log.Fatal("Error loading .env file")
 	}
 
-	apiKey := os.Getenv("GITHUB_API_KEY")
+	// apiKey := os.Getenv("GITHUB_API_KEY")
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
 	threeMonthsAgo := time.Now().AddDate(0, -3, 0).Format("2006-01-02T15:04:05Z")
@@ -43,7 +42,7 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	}
 
 	// Set GitHub API token
-	req.Header.Set("Authorization", "Bearer "+apiKey)
+	req.Header.Set("Authorization", "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")
 
 	client := http.Client{}
 	response, err := client.Do(req)
