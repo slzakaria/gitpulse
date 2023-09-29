@@ -6,7 +6,7 @@ const MainSection = () => {
 	const language = "javascript";
 
 	useEffect(() => {
-		fetch(`https://extinct-pear-pleat.cyclic.cloud/api/issues/${language}`)
+		fetch(`http://localhost:3000/api/issues/${language}`)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`Network response was not ok: ${response.status}`);
