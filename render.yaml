@@ -3,3 +3,6 @@
 services:
   - name: gitpulse
     startCommand: ./server/main
+mount:
+  - source: env
+    target: /app/server/.env
