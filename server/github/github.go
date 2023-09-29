@@ -29,9 +29,9 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	// apiKey := os.Getenv("GITHUB_API_KEY")
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
-	threeMonthsAgo := time.Now().AddDate(0, -3, 0).Format("2006-01-02T15:04:05Z")
+	sixMonthsAgo := time.Now().AddDate(0, -6, 0).Format("2006-01-02T15:04:05Z")
 
-	apiUrl := fmt.Sprintf("%s/search/repositories?q=language:%s+is:public+pushed:>%s+open:issues&sort=updated&order=desc", baseURL, language, threeMonthsAgo)
+	apiUrl := fmt.Sprintf("%s/search/repositories?q=language:%s+is:public+pushed:>%s+open:issues&sort=updated&order=desc", baseURL, language, sixMonthsAgo)
 
 	req, err := http.NewRequest("GET", apiUrl, nil)
 	if err != nil {
