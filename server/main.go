@@ -31,7 +31,7 @@ func main() {
 	// Use the CORS middleware
 	handler := c.Handler(router)
 
-	port := ":8080"
+	port := ":3000"
 	fmt.Println("Port is :", port)
 
 	log.Printf("Server is running on port %s ...\nFetching github issues opened in the last 3 months", port)
