@@ -26,7 +26,7 @@ type Repository struct {
 func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	// Load environment variables from .env file
 	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatalf("Error loading .env file inside github.go: %v", err)
 	}
 
 	// apiKey := os.Getenv("GITHUB_API_KEY")
