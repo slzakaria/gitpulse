@@ -3,11 +3,8 @@ package github
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"time"
-
-	"github.com/joho/godotenv"
 )
 
 const baseURL = "https://api.github.com"
@@ -25,11 +22,6 @@ type Repository struct {
 
 func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	// Load environment variables from .env file
-
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file inside github.go =========>  ", err)
-	}
 
 	apiKey := "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"
 
