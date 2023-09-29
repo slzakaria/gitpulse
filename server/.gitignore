@@ -4,5 +4,7 @@
 *.out
 *.test
 
+/util
+
 # Ignore configuration files with sensitive information
 .env
