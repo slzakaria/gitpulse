@@ -7,12 +7,10 @@ WORKDIR /app/server
 # Copy the Go application source code and dependencies
 COPY ./server/ .
 
-COPY .env ./server
-
 # Build the Go application
 RUN go build -o main
 
-# Expose port 8080 to the outside world
+# Expose port 3000 to the outside world
 EXPOSE 3000
 
 # Command to run the executable

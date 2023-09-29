@@ -1,0 +1,14 @@
+version: "3" # Use version 3 or higher for the most up-to-date syntax
+
+services:
+  gitpulse:
+    image: gitpulse
+    build:
+      context: .
+      dockerfile: Dockerfile # Specify the name of your Dockerfile
+    ports:
+      - "3000:3000" # Map host port to container port (adjust as needed)
+    env_file:
+      - .env
+    volumes:
+      - /Users/zackary/Documents/Coding/Code/go/codetrackr:/app/server/

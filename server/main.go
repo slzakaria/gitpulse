@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/rs/cors"
@@ -17,7 +18,9 @@ func main() {
 		log.Fatalf("Error loading .env file inside main.go: %v", err)
 	}
 
-	// PORT := os.Getenv("PORT")
+	PORT := os.Getenv("PORT")
+	apik := os.Getenv("GITHUB_API_KEY")
+	fmt.Println(apik, PORT)
 
 	// Set up API routes
 	router := api.SetupRoutes()
