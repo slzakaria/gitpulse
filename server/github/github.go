@@ -5,12 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/joho/godotenv"
-
-	_ "github.com/joho/godotenv/autoload"
 )
 
 const baseURL = "https://api.github.com"
@@ -28,13 +25,13 @@ type Repository struct {
 
 func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	// Load environment variables from .env file
-	godotenv.Load(".env")
+
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file inside github.go ", err)
+		log.Fatal("Error loading .env file inside github.go =========>  ", err)
 	}
 
-	apiKey := os.Getenv("API_KEY")
+	apiKey := "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"
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
 	sixMonthsAgo := time.Now().AddDate(0, -6, 0).Format("2006-01-02T15:04:05Z")
