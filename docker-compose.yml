@@ -9,6 +9,4 @@ services:
     ports:
       - "3000:3000" # Map host port to container port (adjust as needed)
     env_file:
-      - .env
-    volumes:
-      - /Users/zackary/Documents/Coding/Code/go/codetrackr:/app/server/
+      - server/.env
