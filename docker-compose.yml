@@ -1,4 +1,4 @@
-version: "3" # Use version 3 or higher for the most up-to-date syntax
+version: "3"
 
 services:
   gitpulse:
