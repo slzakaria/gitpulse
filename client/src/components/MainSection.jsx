@@ -6,7 +6,7 @@ const MainSection = () => {
 	const language = "javascript";
 
 	useEffect(() => {
-		fetch(`http://localhost:3000/api/issues/${language}`)
+		fetch(`https://git-tracker.onrender.com/api/issues/${language}`)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`Network response was not ok: ${response.status}`);
