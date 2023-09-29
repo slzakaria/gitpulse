@@ -3,6 +3,7 @@
 *.o
 *.out
 *.work
+*.env
 
 # Ignore OS and editor-specific files
 .DS_Store

@@ -15,7 +15,7 @@ func main() {
 	fmt.Println("Started the go server successfully")
 
 	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatalf("Error loading .env file: %v", err)
 	}
 
 	PORT := os.Getenv("PORT")
