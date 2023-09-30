@@ -18,7 +18,6 @@ func GetRecentIssuesByLanguageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Return recent issues as JSON response
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(issues); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

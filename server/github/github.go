@@ -36,7 +36,6 @@ func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	}
 
 	// Set GitHub API token
-
 	req.Header.Set("Authorization", apiKey)
 
 	client := http.Client{}
