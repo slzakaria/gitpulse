@@ -1,13 +1,13 @@
 package main
 
 import (
-	"codetrackr/api"
-
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/rs/cors"
+
+	"codetrackr/api"
 )
 
 func main() {
