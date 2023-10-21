@@ -27,6 +27,6 @@ func main() {
 
 	port := ":3000"
 
-	log.Printf("Server is running on port %s ...\nFetching github issues opened in the last 6 months", port)
+	log.Printf("Server is running  .....\nFetching github issues opened in the last 6 months")
 	log.Fatal(http.ListenAndServe(port, handler))
 }
