@@ -1,9 +1,5 @@
-#This is an example webapp.io configuration for Docker!
-FROM vm/ubuntu:18.04
+FROM vm/ubuntu:20.04
 
-# To note: Layerfiles create entire VMs, *not* containers!
-
-# install the latest version of Docker, as in the official Docker installation tutorial.
 RUN apt-get update && \
     apt-get install ca-certificates curl gnupg lsb-release && \
     sudo mkdir -p /etc/apt/keyrings && \
@@ -14,9 +10,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install docker-ce docker-ce-cli containerd.io
 
-# copy files from the repository into this staging server
 COPY . .
 
 RUN docker build -t gitpulse .
 RUN docker run -d -p 3000:3000 gitpulse
-EXPOSE WEBSITE http://localhost:3000
+EXPOSE 3000
