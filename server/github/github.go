@@ -23,7 +23,7 @@ type Repository struct {
 func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
 	// Load environment variables from .env file
 
-	apiKey := "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"
+	apiKey := "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"
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
 	sixMonthsAgo := time.Now().AddDate(0, -6, 0).Format("2006-01-02T15:04:05Z")
