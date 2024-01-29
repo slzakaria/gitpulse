@@ -17,7 +17,7 @@ func main() {
 	router := api.SetupRoutes()
 
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost:5173", "https://gittrackr.vercel.app", "https://gitpulse-zackaria-sl.vercel.app", "https://git-tracker-front.onrender.com"},
+		AllowedOrigins: []string{"http://localhost:3000", "https://gittrackr.vercel.app", "https://gitpulse-zackaria-sl.vercel.app", "https://git-tracker-front.onrender.com"},
 		AllowedMethods: []string{"GET"},
 		AllowedHeaders: []string{"*"},
 	})
