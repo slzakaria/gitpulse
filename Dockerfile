@@ -14,7 +14,7 @@ RUN go build -o main .
 RUN chmod +x main
 
 # Create a new, minimal image to run the binary
-FROM debian:bullseye-slim
+FROM ubuntu:22.04
 
 # Set the working directory in the new image
 WORKDIR /app/server
