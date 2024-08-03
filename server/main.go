@@ -12,8 +12,6 @@ import (
 
 func main() {
 	fmt.Println("Started the go server successfully")
-
-	// Set up API routes
 	router := api.SetupRoutes()
 
 	c := cors.New(cors.Options{
