@@ -24,7 +24,7 @@ type Repository struct {
 }
 
 func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
-	err := godotenv.Load("../.env")
+	err := godotenv.Load()
 	if err != nil {
 		return nil, fmt.Errorf("error loading .env file =======> %v", err)
 	}
