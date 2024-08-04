@@ -23,16 +23,25 @@ type Repository struct {
 	Language     string    `json:"language"`
 }
 
-func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return nil, fmt.Errorf("error loading .env file =======> %v", err)
+func loadAPIKey() (string, error) {
+	_ = godotenv.Load()
+	apiKey := os.Getenv("GITHUB_APIKEY")
+	if apiKey == "" {
+		return "", fmt.Errorf("API key not found in environment variables")
 	}
 
-	apiKey := os.Getenv("GITHUB_API_KEY")
-	if apiKey == "" {
-		return nil, fmt.Errorf("API key not found =====> %v", apiKey)
+	return apiKey, nil
+}
+
+func GetRecentIssuesByLanguage(language string) ([]Repository, error) {
+	apiKey, err := loadAPIKey()
+	if err != nil {
+		// Handle the error (e.g., log it and exit)
+		fmt.Printf("Error loading API key: %v\n", err)
+		os.Exit(1)
 	}
+
+	fmt.Printf("API key: %s\n", apiKey)
 
 	// Calculate the date three months ago from now and fetch repos with open issues during the timefrime
 	sixMonthsAgo := time.Now().AddDate(0, -6, 0).Format("2006-01-02T15:04:05Z")
