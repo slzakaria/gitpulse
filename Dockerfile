@@ -10,23 +10,19 @@ RUN go mod download
 
 # Copy the rest of the source code
 COPY ./server/ .
-COPY ./server/.env .env
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
-ARG GITHUB_APIKEY
-RUN echo "GITHUB_APIKEY=${GITHUB_APIKEY}" > .env
-
-RUN go build -o main .
-RUN chmod +x main
-
-# Create a new, minimal image to run the binary
-FROM ubuntu:22.04
+# Use a smaller base image for the final stage
+FROM gcr.io/distroless/base-debian11 AS final
 
 # Set the working directory in the new image
 WORKDIR /app/server
 
 # Copy the binary from the builder image
 COPY --from=builder /app/server/main .
-COPY --from=builder /app/server/.env .env
 
+# Expose the port the app runs on
 EXPOSE 3000
-CMD ["./main"]
+
+# Run the binary
+CMD ["/app/server/main"]
