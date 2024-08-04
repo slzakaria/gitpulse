@@ -1,6 +1,9 @@
 services:
-  - name: gitpulse
-    startCommand: ./server/main
-mount:
-  - source: env
-    target: /app/server/.env
+  - type: web
+    name: gitrackr
+    env: go
+    buildCommand: go build -o main .
+    startCommand: ./main
+    envVars:
+      - key: GITHUB_APIKEY
+        sync: false

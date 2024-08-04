@@ -10,6 +10,11 @@ RUN go mod download
 
 # Copy the rest of the source code
 COPY ./server/ .
+COPY ./server/.env .env
+
+ARG GITHUB_APIKEY
+RUN echo "GITHUB_APIKEY=${GITHUB_APIKEY}" > .env
+
 RUN go build -o main .
 RUN chmod +x main
 
@@ -21,6 +26,7 @@ WORKDIR /app/server
 
 # Copy the binary from the builder image
 COPY --from=builder /app/server/main .
+COPY --from=builder /app/server/.env .env
 
 EXPOSE 3000
 CMD ["./main"]
