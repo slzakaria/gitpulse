@@ -9,7 +9,6 @@ func SetupRoutes() *chi.Mux {
 	router := chi.NewRouter()
 
 	router.Use(middleware.Logger)
-	// Define API routes here
 	router.Get("/api/issues/{language}", GetRecentIssuesByLanguageHandler)
 
 	return router
